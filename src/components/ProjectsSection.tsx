@@ -17,10 +17,10 @@ const projects = [
     ],
     techStack: ["Jetpack Compose", "Kotlin", "MVVM", "Room Database"],
     images: [
-      "/screenshots/screen_01.jpeg",
-      "/screenshots/screen_02.jpeg",
-      "/screenshots/screen_03.jpeg",
-      "/screenshots/screen_04.jpeg"
+      "/adarsh-android-portfolio/screenshots/screen_01.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_02.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_03.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_04.jpeg"
     ],
   },
 ];
