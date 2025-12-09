@@ -24,7 +24,7 @@ export const Footer = () => {
               <Mail className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com/in/adarsh"
+              href="https://linkedin.com/in/adarsh-g-a0040b273"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 bg-secondary rounded-lg text-muted-foreground hover:text-primary hover:bg-accent transition-colors duration-200"
@@ -32,7 +32,7 @@ export const Footer = () => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="https://github.com/adarsh"
+              href="https://github.com/adarshgoud"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 bg-secondary rounded-lg text-muted-foreground hover:text-primary hover:bg-accent transition-colors duration-200"
