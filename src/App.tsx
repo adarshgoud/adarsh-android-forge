@@ -12,12 +12,12 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Force redeploy - version 1 */}
+      {/* Force redeploy - version 2 */}
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <Router>
+          <Router basename="/adarsh-android-portfolio">
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/project/:projectId" element={<ProjectDetail />} />
