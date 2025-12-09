@@ -1,8 +1,27 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Download, ArrowRight, Smartphone } from "lucide-react";
 import AndroidIcon from "@/icons/android_icon.png";
+import JavaIcon from "@/icons/java_icon.png";
+import KotlinIcon from "@/icons/kotlin_icon.png";
+import { useState, useEffect } from "react";
+
+const icons = [
+  { src: AndroidIcon, alt: "Android Icon" },
+  { src: JavaIcon, alt: "Java Icon" },
+  { src: KotlinIcon, alt: "Kotlin Icon" }
+];
 
 export const HeroSection = () => {
+  const [currentIconIndex, setCurrentIconIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length);
+    }, 2000); // Change icon every 2 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero">
       {/* Animated Background Shapes */}
@@ -47,7 +66,7 @@ export const HeroSection = () => {
             >
               <Smartphone className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-accent-foreground">
-                Android Developer
+                Software Developer
               </span>
             </motion.div>
 
@@ -99,7 +118,18 @@ export const HeroSection = () => {
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-primary/10 to-accent/30 p-2 shadow-card">
                 <div className="w-full h-full rounded-full bg-secondary flex items-center justify-center overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-muted to-secondary flex items-center justify-center">
-                    <img src={AndroidIcon} alt="Android Icon" className="w-64 h-64 text-primary/40" />
+                    <AnimatePresence mode="wait">
+                      <motion.img 
+                        key={currentIconIndex}
+                        src={icons[currentIconIndex].src} 
+                        alt={icons[currentIconIndex].alt} 
+                        className="w-64 h-64 text-primary/40"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        exit={{ scale: 0.8, opacity: 0 }}
+                        transition={{ duration: 0.5 }}
+                      />
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
