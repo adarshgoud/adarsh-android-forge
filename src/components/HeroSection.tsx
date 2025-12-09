@@ -66,7 +66,7 @@ export const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <motion.a
-                href="/resume/Adarsh_Cv.pdf"
+                href="/Adarsh_Cv.pdf"
                 download="Adarsh_Cv.pdf"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
