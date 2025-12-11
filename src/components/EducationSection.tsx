@@ -6,29 +6,12 @@ const education = [
   {
     degree: "Bachelor of Technology in Computer Science",
     institution: "JNTUH University",
-    period: "2015 - 2019",
-    description:
-      "Focused on software engineering, data structures, algorithms, and mobile application development.",
-    achievements: [
-      "Graduated with First Class Distinction",
-      "Active member of the Computer Science Club",
-      "Participated in multiple hackathons and coding competitions",
-      "Completed capstone project on Android Application Development"
-    ],
-    technologies: ["Java", "C++", "Android", "MySQL", "Data Structures"]
+    period: "2015 - 2019"
   },
   {
     degree: "Higher Secondary Education",
     institution: "Sri Chaitanya Junior College",
-    period: "2013 - 2015",
-    description:
-      "Science stream with Mathematics, Physics, and Chemistry focus.",
-    achievements: [
-      "Scored 95% in Mathematics",
-      "State level finalist in Science Olympiad",
-      "Editor of school science magazine"
-    ],
-    technologies: ["Mathematics", "Physics", "Chemistry"]
+    period: "2013 - 2015"
   }
 ];
 
@@ -91,41 +74,7 @@ export const EducationSection = () => {
                   <h3 className="text-xl font-bold text-foreground mb-1">
                     {edu.degree}
                   </h3>
-                  <p className="text-primary font-medium mb-3">{edu.institution}</p>
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {edu.description}
-                  </p>
-
-                  <ul
-                    className={`space-y-2 mb-4 ${
-                      index % 2 === 0 ? "md:text-left" : ""
-                    }`}
-                  >
-                    {edu.achievements.map((achievement) => (
-                      <li
-                        key={achievement}
-                        className="flex items-start gap-2 text-sm text-foreground"
-                      >
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div
-                    className={`flex flex-wrap gap-2 ${
-                      index % 2 === 0 ? "md:justify-end" : ""
-                    }`}
-                  >
-                    {edu.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 bg-accent text-accent-foreground text-xs rounded-md"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                  <p className="text-primary font-medium">{edu.institution}</p>
                 </div>
               </motion.div>
             ))}
