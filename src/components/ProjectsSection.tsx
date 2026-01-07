@@ -81,78 +81,119 @@ export const ProjectsSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 className="group bg-card rounded-3xl shadow-card overflow-hidden hover:shadow-hover transition-all duration-500"
               >
-                <div className="grid lg:grid-cols-2 gap-8">
-                  {/* Image */}
-                  <div className="relative h-64 lg:h-auto bg-gradient-to-br from-primary/10 via-accent to-secondary overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-full max-w-xs h-80 bg-card rounded-2xl shadow-xl">
-                        <div className="w-full h-full rounded-2xl p-4 overflow-hidden relative">
-                          {project.images.map((image, index) => (
-                            <img 
-                              key={index}
-                              src={image} 
-                              alt={`${project.title} screenshot ${index + 1}`} 
-                              className={`absolute inset-0 w-full h-full object-contain rounded-2xl transition-opacity duration-500 ${
-                                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-                              }`}
-                            />
-                          ))}
+                <div className="w-full">
+                  {/* Image and Content Row */}
+                  <div className="grid lg:grid-cols-12 gap-8 mb-6">
+                    {/* Image - 30% width */}
+                    <div className="lg:col-span-4">
+                      <div className="relative h-64 lg:h-96 bg-gradient-to-br from-primary/10 via-accent to-secondary overflow-hidden">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-full max-w-xs h-80 bg-card rounded-2xl shadow-xl">
+                            <div className="w-full h-full rounded-2xl p-4 overflow-hidden relative">
+                              {project.images && project.images.length > 0 ? (
+                                <div className="relative w-full h-full">
+                                  {project.images.map((image, imgIndex) => (
+                                    <div 
+                                      key={imgIndex}
+                                      className={`absolute inset-0 ${imgIndex === currentImageIndex ? 'block z-10' : 'hidden z-0'}`}>
+                                      <img 
+                                        src={image} 
+                                        alt={`${project.title} screenshot ${imgIndex + 1}`} 
+                                        className="w-full h-full object-contain rounded-xl"
+                                        onError={(e) => console.error('Image failed to load:', image, e)}
+                                        onLoad={() => console.log(`Image ${imgIndex} loaded:`, image, imgIndex === currentImageIndex ? '(CURRENT)' : '(HIDDEN)')}
+                                      />
+                                    </div>
+                                  ))}
+                                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+                                    {project.images.map((_, imgIndex) => (
+                                      <button
+                                        key={imgIndex}
+                                        onClick={() => setCurrentImageIndex(imgIndex)}
+                                        className={`w-2 h-2 rounded-full ${imgIndex === currentImageIndex ? 'bg-white' : 'bg-white/50'}`}
+                                        aria-label={`Go to slide ${imgIndex + 1}`}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-gray-200 rounded-xl">
+                                  <span className="text-gray-500">No screenshots available</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
+
+                    {/* Content - 70% width */}
+                    <div className="lg:col-span-8 p-8 lg:p-10 flex flex-col justify-center">
+                      <h3 className="text-2xl font-bold text-foreground mb-3">
+                        {project.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-6">
+                        {project.description}
+                      </p>
+
+                      <ul className="space-y-2 mb-6">
+                        {project.features.map((feature) => (
+                          <li
+                            key={feature}
+                            className="flex items-center gap-2 text-sm text-foreground"
+                          >
+                            <span className="w-1.5 h-1.5 bg-primary rounded-full" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-wrap gap-2 mb-8">
+                        {project.techStack.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-lg"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Hidden buttons - Uncomment when ready to use
+                      <div className="flex flex-wrap gap-3">
+                        <Link
+                          to={`/project/${project.id}`}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-all duration-200"
+                        >
+                          View Details
+                          <ArrowRight className="w-4 h-4" />
+                        </Link>
+                        <a
+                          href="#"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary text-secondary-foreground rounded-full text-sm font-medium hover:bg-secondary/80 transition-all duration-200"
+                        >
+                          <Github className="w-4 h-4" />
+                          GitHub
+                        </a>
+                      </div>
+                      */}
+                    </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="p-8 lg:p-10 flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-foreground mb-3">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-6">
-                      {project.description}
-                    </p>
-
-                    <ul className="space-y-2 mb-6">
-                      {project.features.map((feature) => (
-                        <li
-                          key={feature}
-                          className="flex items-center gap-2 text-sm text-foreground"
-                        >
-                          <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {project.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 bg-accent text-accent-foreground text-xs font-medium rounded-lg"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  {/* GIF Section - Below the row */}
+                  {project.id === 'nurse-management' && (
+                    <div className="flex justify-center mb-6">
+                      <div className="overflow-hidden rounded-lg">
+                        <img 
+                          src="/adarsh-android-portfolio/gifs/nurse_app_flow.gif"
+                          alt="Nurse App Workflow Demo" 
+                          className="w-full h-auto"
+                          style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '400px', transform: 'scale(1.3)', transformOrigin: 'center' }}
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
-
-                    {/* Hidden buttons - Uncomment when ready to use
-                    <div className="flex flex-wrap gap-3">
-                      <Link
-                        to={`/project/${project.id}`}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:bg-primary/90 transition-all duration-200"
-                      >
-                        View Details
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                      <a
-                        href="#"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-secondary text-secondary-foreground rounded-full text-sm font-medium hover:bg-secondary/80 transition-all duration-200"
-                      >
-                        <Github className="w-4 h-4" />
-                        GitHub
-                      </a>
-                    </div>
-                    */}
-                  </div>
+                  )}
                 </div>
               </motion.div>
             ))}

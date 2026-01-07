@@ -67,6 +67,71 @@ const projectData = {
     ],
     githubUrl: "https://github.com/adarsh/task-manager",
     apkUrl: "#",
+    images: [
+      "/adarsh-android-portfolio/screenshots/screen_01.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_02.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_03.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_04.jpeg"
+    ],
+  },
+  "nurse-management": {
+    title: "Nurse Asst App",
+    tagline: "Vitals Monitoring Application for Nurses with real-time sync and offline support for seamless productivity.",
+    overview:
+      "A comprehensive healthcare application designed for nurses to efficiently monitor and record patient vital signs. The app provides real-time data synchronization with offline capabilities, ensuring critical patient information is always accessible regardless of network conditions.",
+    problem:
+      "Healthcare professionals need reliable tools to track patient vitals efficiently while maintaining data accuracy. Traditional paper-based systems are prone to errors and don't provide real-time insights needed for quality patient care.",
+    features: [
+      {
+        icon: Smartphone,
+        title: "Patient Profiles",
+        description:
+          "Create and manage comprehensive patient profiles with medical history",
+      },
+      {
+        icon: Database,
+        title: "Offline Data Storage",
+        description:
+          "Room database ensures data is available even without network connectivity",
+      },
+      {
+        icon: Bell,
+        title: "Risk Assessment",
+        description:
+          "Automatic risk calculations based on vital signs readings",
+      },
+      {
+        icon: Wifi,
+        title: "Real-time Sync",
+        description:
+          "Seamless synchronization with healthcare systems when connectivity is restored",
+      },
+    ],
+    techStack: [
+      { name: "Jetpack Compose", category: "UI Framework" },
+      { name: "Kotlin", category: "Language" },
+      { name: "MVVM", category: "Architecture" },
+      { name: "Room Database", category: "Database" },
+      { name: "DataStore", category: "Preferences" },
+      { name: "Retrofit", category: "Networking" },
+      { name: "Hilt", category: "Dependency Injection" },
+      { name: "Coroutines", category: "Concurrency" },
+    ],
+    highlights: [
+      "Comprehensive vital signs monitoring",
+      "Automatic risk assessment algorithms",
+      "Offline-first architecture with Room DB",
+      "Material Design 3 implementation",
+      "Healthcare industry compliance standards",
+    ],
+    githubUrl: "https://github.com/adarsh/nurse-app",
+    apkUrl: "#",
+    images: [
+      "/adarsh-android-portfolio/screenshots/screen_01.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_02.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_03.jpeg",
+      "/adarsh-android-portfolio/screenshots/screen_04.jpeg"
+    ],
   },
 };
 
@@ -152,28 +217,74 @@ const ProjectDetail = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-5xl mx-auto"
             >
-              <div className="flex justify-center gap-4 md:gap-8">
-                {[1, 2, 3].map((index) => (
-                  <div
-                    key={index}
-                    className="w-32 sm:w-48 h-56 sm:h-80 bg-card rounded-3xl shadow-card overflow-hidden"
-                  >
-                    <div className="w-full h-full bg-gradient-to-b from-muted to-secondary flex items-center justify-center">
-                      <div className="text-center p-4">
-                        <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto bg-primary/20 rounded-xl mb-2" />
-                        <div className="w-16 sm:w-24 h-2 bg-primary/20 rounded-full mx-auto mb-2" />
-                        <div className="w-12 sm:w-20 h-2 bg-primary/10 rounded-full mx-auto" />
+              {project.images ? (
+                <div className="flex justify-center gap-4 md:gap-8">
+                  {project.images.map((image, index) => (
+                    <div
+                      key={index}
+                      className="w-32 sm:w-48 h-56 sm:h-80 bg-card rounded-3xl shadow-card overflow-hidden"
+                    >
+                      <img 
+                        src={image} 
+                        alt={`${project.title} screenshot ${index + 1}`}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex justify-center gap-4 md:gap-8">
+                  {[1, 2, 3].map((index) => (
+                    <div
+                      key={index}
+                      className="w-32 sm:w-48 h-56 sm:h-80 bg-card rounded-3xl shadow-card overflow-hidden"
+                    >
+                      <div className="w-full h-full bg-gradient-to-b from-muted to-secondary flex items-center justify-center">
+                        <div className="text-center p-4">
+                          <div className="w-8 h-8 sm:w-12 sm:h-12 mx-auto bg-primary/20 rounded-xl mb-2" />
+                          <div className="w-16 sm:w-24 h-2 bg-primary/20 rounded-full mx-auto mb-2" />
+                          <div className="w-12 sm:w-20 h-2 bg-primary/10 rounded-full mx-auto" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              )}
               <p className="text-center text-sm text-muted-foreground mt-6">
                 App Screenshots
               </p>
             </motion.div>
           </div>
         </section>
+
+        {/* GIF Demo Section - Only for nurse management project */}
+        {projectId === 'nurse-management' && (
+          <section className="py-16 bg-background">
+            <div className="container mx-auto px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="max-w-4xl mx-auto text-center"
+              >
+                <h2 className="text-2xl font-bold text-foreground mb-8">
+                  App Workflow Demo
+                </h2>
+                <div className="overflow-hidden rounded-xl">
+                  <img 
+                    src="/adarsh-android-portfolio/gifs/nurse_app_flow.gif" 
+                    alt="Nurse App Workflow Demo" 
+                    className="w-full h-auto"
+                    style={{ maxWidth: '100%', height: 'auto', transform: 'scale(1.3)', transformOrigin: 'top left' }}
+                  />
+                </div>
+                <p className="text-center text-sm text-muted-foreground mt-6 max-w-2xl mx-auto">
+                  Interactive demonstration showing the complete workflow of the Nurse Assistant App, including patient registration, vital signs recording, and risk assessment features.
+                </p>
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* Overview */}
         <section className="py-16">
