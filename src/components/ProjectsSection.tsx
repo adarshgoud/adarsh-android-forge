@@ -17,10 +17,10 @@ const projects = [
     ],
     techStack: ["Jetpack Compose", "Kotlin", "MVVM", "Room Database"],
     images: [
-      "/adarsh-android-portfolio/screenshots/screen_01.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_02.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_03.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_04.jpeg"
+      `${import.meta.env.BASE_URL}screenshots/screen_01.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_02.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_03.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_04.jpeg`
     ],
   },
 ];
@@ -185,7 +185,7 @@ export const ProjectsSection = () => {
                     <div className="flex justify-center mb-6">
                       <div className="overflow-hidden rounded-lg">
                         <img 
-                          src="/adarsh-android-portfolio/gifs/nurse_app_flow.gif"
+                          src={`${import.meta.env.BASE_URL}gifs/nurse_app_flow.gif`}
                           alt="Nurse App Workflow Demo" 
                           className="w-full h-auto"
                           style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '400px', transform: 'scale(1.3)', transformOrigin: 'center' }}

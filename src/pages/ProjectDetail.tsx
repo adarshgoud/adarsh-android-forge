@@ -68,10 +68,10 @@ const projectData = {
     githubUrl: "https://github.com/adarsh/task-manager",
     apkUrl: "#",
     images: [
-      "/adarsh-android-portfolio/screenshots/screen_01.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_02.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_03.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_04.jpeg"
+      `${import.meta.env.BASE_URL}screenshots/screen_01.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_02.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_03.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_04.jpeg`
     ],
   },
   "nurse-management": {
@@ -127,10 +127,10 @@ const projectData = {
     githubUrl: "https://github.com/adarsh/nurse-app",
     apkUrl: "#",
     images: [
-      "/adarsh-android-portfolio/screenshots/screen_01.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_02.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_03.jpeg",
-      "/adarsh-android-portfolio/screenshots/screen_04.jpeg"
+      `${import.meta.env.BASE_URL}screenshots/screen_01.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_02.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_03.jpeg`,
+      `${import.meta.env.BASE_URL}screenshots/screen_04.jpeg`
     ],
   },
 };
@@ -272,8 +272,8 @@ const ProjectDetail = () => {
                 </h2>
                 <div className="overflow-hidden rounded-xl">
                   <img 
-                    src="/adarsh-android-portfolio/gifs/nurse_app_flow.gif" 
-                    alt="Nurse App Workflow Demo" 
+                    src={`${import.meta.env.BASE_URL}gifs/nurse_app_flow.gif`} 
+                    alt="Nurse App Workflow Demo"
                     className="w-full h-auto"
                     style={{ maxWidth: '100%', height: 'auto', transform: 'scale(1.3)', transformOrigin: 'top left' }}
                   />
