@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "postbuild": "xcopy public\\screenshots dist\\screenshots /E /I /Y"
+    "postbuild": "xcopy public\\screenshots dist\\screenshots /E /I /Y && xcopy public\\gifs dist\\gifs /E /I /Y"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
