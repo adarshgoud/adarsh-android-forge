@@ -60,6 +60,24 @@ const skillCategories = [
     ],
   },
   {
+    title: "Maps & Location",
+    skills: [
+      "Google Maps SDK",
+      "MapmyIndia Maps",
+      "Routing & Navigation",
+      "GPS/GNSS",
+      "Location Services"
+    ],
+  },
+  {
+    title: "Sensors & Connectivity",
+    skills: [
+      "Bluetooth",
+      "Sensor-based data handling",
+      "Real-time data streams"
+    ],
+  },
+  {
     title: "Architecture & Design",
     skills: [
       "MVVM",
